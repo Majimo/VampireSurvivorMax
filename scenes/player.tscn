@@ -95,6 +95,5 @@ default_color = Color(1, 0.137255, 0.137255, 1)
 [node name="HitTimer" type="Timer" parent="."]
 
 [node name="Weapons" parent="." instance=ExtResource("8_dctyt")]
-visible = false
 
 [connection signal="timeout" from="HitTimer" to="." method="_on_hit_timer_timeout"]

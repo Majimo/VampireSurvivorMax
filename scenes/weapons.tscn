@@ -47,3 +47,4 @@ centered = false
 [node name="KnivesCollison" type="CollisionShape2D" parent="KnivesArea"]
 position = Vector2(38, 0)
 shape = SubResource("RectangleShape2D_b03ua")
+disabled = true

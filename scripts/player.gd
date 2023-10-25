@@ -7,6 +7,9 @@ var speed = 200
 var can_be_hit = true
 
 
+func _ready():
+	Globals.set_has_knives(true)
+
 func _process(delta):
 	# Déplacement horizontal
 	var horizontal_input = Input.get_action_strength("ui_right") - Input.get_action_strength("ui_left")
@@ -21,8 +24,10 @@ func _process(delta):
 	
 	if horizontal_input == 1:
 		$AnimatedSprite2D.scale.x = abs($AnimatedSprite2D.scale.x)
+		$Weapons.scale.x = abs($Weapons.scale.x)
 	elif horizontal_input == -1:
 		$AnimatedSprite2D.scale.x = -abs($AnimatedSprite2D.scale.x)
+		$Weapons.scale.x = -abs($Weapons.scale.x)
 
 	if movement:
 		$AnimatedSprite2D.play("walk")
@@ -30,7 +35,6 @@ func _process(delta):
 		$AnimatedSprite2D.play("idle")
 
 	var enemy_colision = move_and_collide(movement)
-	
 	
 	if enemy_colision and can_be_hit:
 		timer.start(1.0)
