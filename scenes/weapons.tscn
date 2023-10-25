@@ -1,0 +1,49 @@
+[gd_scene load_steps=8 format=3 uid="uid://b8ewed2x8rga"]
+
+[ext_resource type="Texture2D" uid="uid://impmqnnmm557" path="res://assets/player/knives/knives_01.png" id="1_7o8fl"]
+[ext_resource type="Script" path="res://scripts/weapons.gd" id="1_fx534"]
+[ext_resource type="Texture2D" uid="uid://dndbt5bfgktdk" path="res://assets/player/knives/knives_00.png" id="2_jjgua"]
+[ext_resource type="Texture2D" uid="uid://b35eatmxcm4ja" path="res://assets/player/knives/knives_02.png" id="2_okmlk"]
+[ext_resource type="Texture2D" uid="uid://b3jl4le0jjxhe" path="res://assets/player/knives/knives_03.png" id="3_wj1mp"]
+
+[sub_resource type="SpriteFrames" id="SpriteFrames_6qjfk"]
+animations = [{
+"frames": [{
+"duration": 1.0,
+"texture": ExtResource("2_jjgua")
+}, {
+"duration": 1.0,
+"texture": ExtResource("1_7o8fl")
+}, {
+"duration": 1.0,
+"texture": ExtResource("2_okmlk")
+}, {
+"duration": 1.0,
+"texture": ExtResource("2_okmlk")
+}, {
+"duration": 1.0,
+"texture": ExtResource("3_wj1mp")
+}],
+"loop": true,
+"name": &"knives",
+"speed": 10.0
+}]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_b03ua"]
+size = Vector2(56, 16)
+
+[node name="Weapons" type="Node2D"]
+script = ExtResource("1_fx534")
+
+[node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="."]
+position = Vector2(10, -26)
+sprite_frames = SubResource("SpriteFrames_6qjfk")
+animation = &"knives"
+frame = 2
+centered = false
+
+[node name="KnivesArea" type="Area2D" parent="."]
+
+[node name="KnivesCollison" type="CollisionShape2D" parent="KnivesArea"]
+position = Vector2(38, 0)
+shape = SubResource("RectangleShape2D_b03ua")
