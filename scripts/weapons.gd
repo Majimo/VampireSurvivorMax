@@ -4,7 +4,8 @@ var knives_out = true
 
 
 func _process(delta):
-	if knives_out and Globals.get_has_knives():
+#	if knives_out and Globals.get_has_knives():
+	if knives_out:
 		launch_knives()
 	if $AnimatedSprite2D.frame == 3:
 		_on_knives_animation_end()
