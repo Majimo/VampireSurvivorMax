@@ -1,8 +1,14 @@
 extends Node2D
 
 
-@onready var xp_counter = $Player/Camera2D/XPCounter
+@onready var lvl_counter = $UiContainer/VBoxContainer/LvlCounter
+@onready var progress_bar = $UiContainer/VBoxContainer/ProgressBar
 
 
 func _process(_delta):
-	xp_counter.text = "XP: " + str(Globals.get_player_XP())
+	lvl_counter.text = "Niveau: " + str(Globals.get_player_lvl())
+	print(Globals.get_next_lvl_milestone())
+	
+	progress_bar.max_value = Globals.get_next_lvl_milestone()
+	progress_bar.min_value = Globals.get_previous_lvl_milestone()
+	progress_bar.value = Globals.get_player_XP()
