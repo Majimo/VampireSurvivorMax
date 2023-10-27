@@ -749,9 +749,8 @@ grow_vertical = 2
 [node name="ProgressBar" type="ProgressBar" parent="UiContainer/VBoxContainer"]
 layout_mode = 2
 step = 1.0
-show_percentage = false
 
 [node name="LvlCounter" type="Label" parent="UiContainer/VBoxContainer"]
 layout_mode = 2
-text = "XP : 0"
+text = "Niveau : 1"
 horizontal_alignment = 1

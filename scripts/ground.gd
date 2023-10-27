@@ -7,7 +7,6 @@ extends Node2D
 
 func _process(_delta):
 	lvl_counter.text = "Niveau: " + str(Globals.get_player_lvl())
-	print(Globals.get_next_lvl_milestone())
 	
 	progress_bar.max_value = Globals.get_next_lvl_milestone()
 	progress_bar.min_value = Globals.get_previous_lvl_milestone()

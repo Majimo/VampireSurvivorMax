@@ -5,6 +5,7 @@ var has_knives = false
 var has_garlic = false
 var player_XP = 0
 var level_steps = [0, 6, 20, 50]
+var Axe
 
 
 ### GETTER AND SETTERS ###
