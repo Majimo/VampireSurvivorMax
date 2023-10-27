@@ -8,7 +8,8 @@ var can_be_hit = true
 
 
 func _ready():
-	Globals.set_has_knives(true)
+	Globals.set_has_garlic(true)
+#	Globals.set_has_knives(true)
 
 func _process(delta):
 	# Déplacement horizontal

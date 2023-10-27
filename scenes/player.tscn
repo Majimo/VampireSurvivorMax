@@ -82,6 +82,8 @@ visible = false
 position = Vector2(0, -0.5)
 shape = SubResource("RectangleShape2D_ou4c5")
 
+[node name="Weapons" parent="." instance=ExtResource("8_dctyt")]
+
 [node name="MaxLife" type="Line2D" parent="."]
 points = PackedVector2Array(-20, -28, 20, -28)
 width = 5.0
@@ -93,7 +95,5 @@ width = 5.0
 default_color = Color(1, 0.137255, 0.137255, 1)
 
 [node name="HitTimer" type="Timer" parent="."]
-
-[node name="Weapons" parent="." instance=ExtResource("8_dctyt")]
 
 [connection signal="timeout" from="HitTimer" to="." method="_on_hit_timer_timeout"]

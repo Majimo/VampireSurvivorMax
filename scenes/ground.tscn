@@ -1,5 +1,6 @@
-[gd_scene load_steps=6 format=3 uid="uid://b0mhgk4pkrsno"]
+[gd_scene load_steps=7 format=3 uid="uid://b0mhgk4pkrsno"]
 
+[ext_resource type="Script" path="res://scripts/ground.gd" id="1_3boyh"]
 [ext_resource type="PackedScene" uid="uid://4ayijhu8o05j" path="res://scenes/player.tscn" id="1_bnq1h"]
 [ext_resource type="Texture2D" uid="uid://b0mjvth0ic0v2" path="res://assets/ground/mandatory-vampire-survivors-carte-lake-foscari-dlc-tides-of-the-foscari.webp" id="1_efxaf"]
 [ext_resource type="PackedScene" uid="uid://b4nc5b7viw7gg" path="res://scenes/skeleton.tscn" id="4_h81q6"]
@@ -700,6 +701,7 @@ margins = Vector2i(8, 8)
 sources/1 = SubResource("TileSetAtlasSource_bgyxe")
 
 [node name="Ground" type="Node2D"]
+script = ExtResource("1_3boyh")
 
 [node name="TileMap" type="TileMap" parent="."]
 tile_set = SubResource("TileSet_nm13h")
@@ -711,23 +713,32 @@ layer_0/tile_data = PackedInt32Array(-3276901, 1245185, 12, -3211365, 1310721, 1
 [node name="Camera2D" type="Camera2D" parent="Player"]
 zoom = Vector2(1.25, 1.25)
 
-[node name="Skeleton" parent="." instance=ExtResource("4_h81q6")]
+[node name="XPCounter" type="Label" parent="Player/Camera2D"]
+offset_left = -450.0
+offset_top = -253.0
+offset_right = -410.0
+offset_bottom = -230.0
+text = "XP : 0"
+
+[node name="Skeletons" type="Node2D" parent="."]
+
+[node name="Skeleton" parent="Skeletons" instance=ExtResource("4_h81q6")]
 position = Vector2(497, -194)
 
-[node name="Skeleton2" parent="." instance=ExtResource("4_h81q6")]
+[node name="Skeleton2" parent="Skeletons" instance=ExtResource("4_h81q6")]
 position = Vector2(-292, -301)
 
-[node name="Skeleton3" parent="." instance=ExtResource("4_h81q6")]
+[node name="Skeleton3" parent="Skeletons" instance=ExtResource("4_h81q6")]
 position = Vector2(87, -311)
 
-[node name="Skeleton4" parent="." instance=ExtResource("4_h81q6")]
+[node name="Skeleton4" parent="Skeletons" instance=ExtResource("4_h81q6")]
 position = Vector2(-512, 28)
 
-[node name="Skeleton5" parent="." instance=ExtResource("4_h81q6")]
+[node name="Skeleton5" parent="Skeletons" instance=ExtResource("4_h81q6")]
 position = Vector2(491, 154)
 
-[node name="Skeleton6" parent="." instance=ExtResource("4_h81q6")]
+[node name="Skeleton6" parent="Skeletons" instance=ExtResource("4_h81q6")]
 position = Vector2(315, 297)
 
-[node name="Skeleton7" parent="." instance=ExtResource("4_h81q6")]
+[node name="Skeleton7" parent="Skeletons" instance=ExtResource("4_h81q6")]
 position = Vector2(-472, 278)

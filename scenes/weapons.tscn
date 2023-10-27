@@ -1,13 +1,29 @@
-[gd_scene load_steps=8 format=3 uid="uid://b8ewed2x8rga"]
+[gd_scene load_steps=11 format=3 uid="uid://b8ewed2x8rga"]
 
 [ext_resource type="Texture2D" uid="uid://impmqnnmm557" path="res://assets/player/knives/knives_01.png" id="1_7o8fl"]
 [ext_resource type="Script" path="res://scripts/weapons.gd" id="1_fx534"]
 [ext_resource type="Texture2D" uid="uid://dndbt5bfgktdk" path="res://assets/player/knives/knives_00.png" id="2_jjgua"]
 [ext_resource type="Texture2D" uid="uid://b35eatmxcm4ja" path="res://assets/player/knives/knives_02.png" id="2_okmlk"]
+[ext_resource type="Texture2D" uid="uid://cafx2a3ja05gm" path="res://assets/player/garlic/garlic00.png" id="2_yw3q8"]
+[ext_resource type="Texture2D" uid="uid://7vue3uli4egy" path="res://assets/player/garlic/garlic01.png" id="3_eqpai"]
 [ext_resource type="Texture2D" uid="uid://b3jl4le0jjxhe" path="res://assets/player/knives/knives_03.png" id="3_wj1mp"]
 
 [sub_resource type="SpriteFrames" id="SpriteFrames_6qjfk"]
 animations = [{
+"frames": [{
+"duration": 1.0,
+"texture": ExtResource("2_yw3q8")
+}, {
+"duration": 1.0,
+"texture": ExtResource("3_eqpai")
+}, {
+"duration": 1.0,
+"texture": ExtResource("2_yw3q8")
+}],
+"loop": true,
+"name": &"garlic",
+"speed": 5.0
+}, {
 "frames": [{
 "duration": 1.0,
 "texture": ExtResource("2_jjgua")
@@ -32,15 +48,21 @@ animations = [{
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_b03ua"]
 size = Vector2(56, 16)
 
+[sub_resource type="CircleShape2D" id="CircleShape2D_4mspg"]
+radius = 70.0643
+
 [node name="Weapons" type="Node2D"]
 script = ExtResource("1_fx534")
 
-[node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="."]
-position = Vector2(10, -26)
+[node name="KnivesAnimation" type="AnimatedSprite2D" parent="."]
+position = Vector2(40, -1)
 sprite_frames = SubResource("SpriteFrames_6qjfk")
 animation = &"knives"
-frame = 2
-centered = false
+
+[node name="GarlicAnimation" type="AnimatedSprite2D" parent="."]
+scale = Vector2(0.75, 0.75)
+sprite_frames = SubResource("SpriteFrames_6qjfk")
+animation = &"garlic"
 
 [node name="KnivesArea" type="Area2D" parent="."]
 
@@ -48,3 +70,11 @@ centered = false
 position = Vector2(38, 0)
 shape = SubResource("RectangleShape2D_b03ua")
 disabled = true
+
+[node name="GarlicArea" type="Area2D" parent="."]
+
+[node name="GarlicCollision" type="CollisionShape2D" parent="GarlicArea"]
+shape = SubResource("CircleShape2D_4mspg")
+disabled = true
+
+[connection signal="body_entered" from="GarlicArea" to="." method="_on_garlic_area_body_entered"]
