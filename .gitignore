@@ -2,3 +2,44 @@
 .godot/
 
 TODO.txt
+
+# Ignore les fichiers temporaires générés par Godot
+*.import
+*.import.res
+*.tscn.import
+*.tscn.import.res
+*.tres.import
+*.tres.import.res
+
+# Ignorer les fichiers de compilation exportés
+export.cfg
+export_presets.cfg
+
+# Ignorer les fichiers de sauvegarde automatique
+*.backup
+
+# Ignorer les fichiers de cache
+.cache
+
+# Ignorer les fichiers de travail de l'éditeur Godot
+*.import
+*.import.res
+*.imported
+*.imported.res
+*.compiled
+*.compiled.res
+
+# Ignorer les fichiers système
+.DS_Store
+Thumbs.db
+
+# Ignorer les fichiers spécifiques à l'environnement (ex. Windows)
+*.suo
+*.user
+*.sln.docstates
+
+# Ignorer les fichiers de débogage
+*.pdb
+
+# Ignorer les fichiers de dépendances
+dependencies/
