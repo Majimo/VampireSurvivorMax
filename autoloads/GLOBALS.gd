@@ -3,11 +3,18 @@ extends Node
 
 var has_knives = false
 var has_garlic = false
+var has_axe = false
 var player_XP = 0
 var level_steps = [0, 6, 20, 50]
-var Axe
 
 
+
+# has_axe getter&setter
+func set_has_axe(value: bool) -> void:
+	has_axe = value
+func get_has_axe() -> bool:
+	return has_axe
+	
 ### GETTER AND SETTERS ###
 # has_knives getter&setter
 func set_has_knives(value: bool) -> void:

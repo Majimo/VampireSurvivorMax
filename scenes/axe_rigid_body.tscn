@@ -1,4 +1,4 @@
-[gd_scene load_steps=8 format=3 uid="uid://wqaff7hhl70a"]
+[gd_scene load_steps=7 format=3 uid="uid://wqaff7hhl70a"]
 
 [ext_resource type="Script" path="res://scripts/axe_rigid_body.gd" id="1_iaejq"]
 [ext_resource type="Texture2D" uid="uid://du2e61j4wqk50" path="res://assets/player/axe00.png" id="1_pami4"]
@@ -41,14 +41,11 @@ _data = {
 "throw": SubResource("Animation_mg3s5")
 }
 
-[sub_resource type="CircleShape2D" id="CircleShape2D_ncxh7"]
-radius = 1.0
-
 [sub_resource type="CircleShape2D" id="CircleShape2D_i7c7y"]
+radius = 17.0
 
-[node name="AxeRigidBody" type="RigidBody2D"]
+[node name="AxeRigidBody" type="Node2D"]
 script = ExtResource("1_iaejq")
-metadata/_edit_group_ = true
 
 [node name="AxeSprite" type="Sprite2D" parent="."]
 rotation = -0.785398
@@ -59,13 +56,10 @@ libraries = {
 "": SubResource("AnimationLibrary_81yxp")
 }
 
-[node name="UselessCollision" type="CollisionShape2D" parent="."]
-visible = false
-shape = SubResource("CircleShape2D_ncxh7")
-disabled = true
-
 [node name="AxeArea" type="Area2D" parent="."]
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="AxeArea"]
 shape = SubResource("CircleShape2D_i7c7y")
 disabled = true
+
+[connection signal="body_entered" from="AxeArea" to="." method="_on_axe_area_body_entered"]

@@ -2,16 +2,27 @@ extends CharacterBody2D
 
 
 @onready var timer = $HitTimer
+@onready var axe = preload("res://scenes/axe_rigid_body.tscn")
 
+var bonus_activated = false
 var speed = 200 
 var can_be_hit = true
 
 
 func _ready():
 	Globals.set_has_garlic(true)
-#	Globals.set_has_knives(true)
+	Globals.set_has_axe(true)
+#	if Globals.get_has_axe():
+#		attack_with_axe()
 
 func _process(delta):
+	if Globals.get_has_axe():
+		bonus_activated = true
+		if bonus_activated:
+			attack_with_axe()
+			bonus_activated = false
+			Globals.set_has_axe(false)
+	
 	# Déplacement horizontal
 	var horizontal_input = Input.get_action_strength("ui_right") - Input.get_action_strength("ui_left")
 	var horizontal_movement = Vector2(horizontal_input, 0).normalized() * speed * delta
@@ -40,6 +51,13 @@ func _process(delta):
 	if enemy_colision and can_be_hit:
 		timer.start(1.0)
 		remove_life()
+
+
+func attack_with_axe():
+	var axe_instance = axe.instantiate()
+	add_child(axe_instance)
+	await get_tree().create_timer(1.5).timeout
+	attack_with_axe()
 
 func remove_life():
 	can_be_hit = false
