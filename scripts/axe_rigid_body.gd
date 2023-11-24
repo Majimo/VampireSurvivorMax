@@ -25,7 +25,6 @@ func _process(delta: float) -> void:
 
 
 func toto_lala(body):
-	print("axe entered", body)
 	if "Skeleton" in body.get_name():
 		body.queue_free()
 		Globals.set_player_XP(Globals.get_player_XP() + 2)

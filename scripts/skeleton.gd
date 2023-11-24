@@ -6,6 +6,7 @@ extends CharacterBody2D
 
 func _ready():
 	$AnimatedSprite2D.play("default")
+	$CollisionShape2D.disabled = false
 
 func _physics_process(_delta):
 	velocity = Vector2.ZERO

@@ -737,6 +737,18 @@ position = Vector2(460, 260)
 [node name="Camera2D" type="Camera2D" parent="Player"]
 zoom = Vector2(1.25, 1.25)
 
+[node name="SpawnPoint1" type="Node2D" parent="Player/Camera2D"]
+position = Vector2(-532, -305)
+
+[node name="SpawnPoint2" type="Node2D" parent="Player/Camera2D"]
+position = Vector2(511, -309)
+
+[node name="SpawnPoint3" type="Node2D" parent="Player/Camera2D"]
+position = Vector2(525, 297)
+
+[node name="SpawnPoint4" type="Node2D" parent="Player/Camera2D"]
+position = Vector2(-532, 309)
+
 [node name="UiContainer" type="CanvasLayer" parent="."]
 
 [node name="VBoxContainer" type="VBoxContainer" parent="UiContainer"]
