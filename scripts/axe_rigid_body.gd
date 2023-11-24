@@ -13,7 +13,7 @@ var max_time = 2
 
 func _ready():
 	axe_animation.play("throw")
-	axe_area.body_entered.connect(toto_lala)
+	axe_area.body_entered.connect(kill_enemy_with_axe)
 
 func _process(delta: float) -> void:
 	time += delta
@@ -24,7 +24,7 @@ func _process(delta: float) -> void:
 		queue_free()
 
 
-func toto_lala(body):
-	if "Skeleton" in body.get_name():
+func kill_enemy_with_axe(body):
+	if body.is_in_group("enemy"):
 		body.queue_free()
 		Globals.set_player_XP(Globals.get_player_XP() + 2)

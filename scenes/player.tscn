@@ -79,7 +79,6 @@ animation = &"walk"
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="."]
 visible = false
-position = Vector2(0, -0.5)
 shape = SubResource("RectangleShape2D_ou4c5")
 
 [node name="Weapons" parent="." instance=ExtResource("8_dctyt")]

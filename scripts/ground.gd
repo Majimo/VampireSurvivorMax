@@ -30,6 +30,7 @@ func _process(_delta):
 func spawn_skeleton(skeleton_origin: Node2D):
 	var skeleton_instance = ennemy_skeleton.instantiate()
 	skeleton_instance.set_position(skeleton_origin.global_position)
+	skeleton_instance.set_name("Toto")
 	add_child(skeleton_instance)
 	await get_tree().create_timer(3).timeout
 	has_spawned_skeleton = false

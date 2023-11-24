@@ -49,7 +49,8 @@ func _process(delta):
 
 func attack_with_axe():
 	var axe_instance = axe.instantiate()
-	add_child(axe_instance)
+	axe_instance.set_position(global_position)
+	get_parent().add_child(axe_instance)
 	await get_tree().create_timer(1.5).timeout
 	attack_with_axe()
 
