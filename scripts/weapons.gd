@@ -25,7 +25,6 @@ func launch_knives():
 
 
 func _on_garlic_area_body_entered(body):
-	print("garlic entered", body)
 	if "Skeleton" in body.get_name():
 		body.queue_free()
 		Globals.set_player_XP(Globals.get_player_XP() + 2)

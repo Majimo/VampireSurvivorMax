@@ -8,7 +8,6 @@ var player_XP = 0
 var level_steps = [0, 6, 20, 50]
 
 
-
 # has_axe getter&setter
 func set_has_axe(value: bool) -> void:
 	has_axe = value

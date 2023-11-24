@@ -2,6 +2,8 @@ extends Node2D
 
 
 @onready var axe_animation = $AxeSprite/AxeAnimation
+@onready var axe_area = $Area2D
+
 
 var initial_velocity = Vector2(200, -600)
 var gravity = Vector2(0, 800)
@@ -10,8 +12,8 @@ var max_time = 2
 
 
 func _ready():
-	print($AxeArea)
 	axe_animation.play("throw")
+	axe_area.body_entered.connect(toto_lala)
 
 func _process(delta: float) -> void:
 	time += delta
@@ -22,7 +24,7 @@ func _process(delta: float) -> void:
 		queue_free()
 
 
-func _on_axe_area_body_entered(body):
+func toto_lala(body):
 	print("axe entered", body)
 	if "Skeleton" in body.get_name():
 		body.queue_free()

@@ -20,7 +20,6 @@ func _process(delta):
 		bonus_activated = true
 		if bonus_activated:
 			attack_with_axe()
-			bonus_activated = false
 			Globals.set_has_axe(false)
 	
 	# Déplacement horizontal

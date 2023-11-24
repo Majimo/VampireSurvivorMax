@@ -19,6 +19,12 @@ config/icon="res://icon.svg"
 
 Globals="*res://autoloads/GLOBALS.gd"
 
+[display]
+
+window/size/mode=2
+window/stretch/mode="viewport"
+window/stretch/aspect="expand"
+
 [physics]
 
 2d/default_gravity=490.0
