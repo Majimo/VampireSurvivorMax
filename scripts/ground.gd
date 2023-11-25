@@ -6,13 +6,6 @@ extends Node2D
 
 @onready var ennemy_skeleton = preload("res://scenes/skeleton.tscn")
 
-@onready var spawnpoints = [
-	$Player/Camera2D/SpawnPoint1,
-	$Player/Camera2D/SpawnPoint2,
-	$Player/Camera2D/SpawnPoint3,
-	$Player/Camera2D/SpawnPoint4
-]
-
 var has_spawned_skeleton = false
 
 
@@ -25,12 +18,23 @@ func _process(_delta):
 	
 	if !has_spawned_skeleton:
 		has_spawned_skeleton = true
-		spawn_skeleton(spawnpoints[(randi() % 4) - 1])
+		spawn_skeleton()
 
-func spawn_skeleton(skeleton_origin: Node2D):
+func get_spawning_time():
+	var time = Globals.level_steps[Globals.level_steps.size() - 1] / Globals.get_next_lvl_milestone()
+	
+	return float(float(time) / 50)
+
+func spawn_skeleton():
 	var skeleton_instance = ennemy_skeleton.instantiate()
-	skeleton_instance.set_position(skeleton_origin.global_position)
-	skeleton_instance.set_name("Toto")
+	
+	var mob_spawn_location = get_node("Player/Camera2D/Path2D/SpawningLine")
+	mob_spawn_location.progress_ratio = randf()
+
+	skeleton_instance.position = mob_spawn_location.global_position
+	
+	var time = get_spawning_time()
+	
 	add_child(skeleton_instance)
-	await get_tree().create_timer(3).timeout
+	await get_tree().create_timer(time).timeout
 	has_spawned_skeleton = false

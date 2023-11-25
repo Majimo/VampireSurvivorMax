@@ -1,4 +1,4 @@
-[gd_scene load_steps=7 format=3 uid="uid://b0mhgk4pkrsno"]
+[gd_scene load_steps=8 format=3 uid="uid://b0mhgk4pkrsno"]
 
 [ext_resource type="Script" path="res://scripts/ground.gd" id="1_3boyh"]
 [ext_resource type="PackedScene" uid="uid://4ayijhu8o05j" path="res://scenes/player.tscn" id="1_bnq1h"]
@@ -700,6 +700,12 @@ margins = Vector2i(8, 8)
 [sub_resource type="TileSet" id="TileSet_nm13h"]
 sources/1 = SubResource("TileSetAtlasSource_bgyxe")
 
+[sub_resource type="Curve2D" id="Curve2D_b3g34"]
+_data = {
+"points": PackedVector2Array(0, 0, 0, 0, 995, 2.08165e-12, 0, 0, 0, 0, 994, 582, 0, 0, 0, 0, -2, 582, 0, 0, 0, 0, 3, 2, 0, 0, 0, 0, 992, 4)
+}
+point_count = 5
+
 [node name="Ground" type="Node2D"]
 script = ExtResource("1_3boyh")
 
@@ -737,17 +743,13 @@ position = Vector2(460, 260)
 [node name="Camera2D" type="Camera2D" parent="Player"]
 zoom = Vector2(1.25, 1.25)
 
-[node name="SpawnPoint1" type="Node2D" parent="Player/Camera2D"]
-position = Vector2(-532, -305)
+[node name="Path2D" type="Path2D" parent="Player/Camera2D"]
+position = Vector2(-499, -285)
+curve = SubResource("Curve2D_b3g34")
 
-[node name="SpawnPoint2" type="Node2D" parent="Player/Camera2D"]
-position = Vector2(511, -309)
-
-[node name="SpawnPoint3" type="Node2D" parent="Player/Camera2D"]
-position = Vector2(525, 297)
-
-[node name="SpawnPoint4" type="Node2D" parent="Player/Camera2D"]
-position = Vector2(-532, 309)
+[node name="SpawningLine" type="PathFollow2D" parent="Player/Camera2D/Path2D"]
+position = Vector2(995, 2.08165e-12)
+rotation = 1.57251
 
 [node name="UiContainer" type="CanvasLayer" parent="."]
 

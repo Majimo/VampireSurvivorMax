@@ -5,7 +5,7 @@ var has_knives = false
 var has_garlic = false
 var has_axe = false
 var player_XP = 0
-var level_steps = [0, 6, 20, 50]
+var level_steps = [0, 6, 20, 50, 125, 300, 750]
 
 
 # has_axe getter&setter
@@ -46,6 +46,15 @@ func get_player_lvl() -> int:
 			lvl = i
 			break
 	return lvl
+
+func get_spawning_time():
+	var time: float = 0
+	if get_next_lvl_milestone() < 6:
+		time = level_steps[Globals.level_steps.size() - 1] / get_next_lvl_milestone()
+	else:
+		time = 5
+	
+	return float(float(time) / 50)
 
 func get_next_lvl_milestone() -> int:
 	return level_steps[get_player_lvl()]
