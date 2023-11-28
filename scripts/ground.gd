@@ -20,11 +20,6 @@ func _process(_delta):
 		has_spawned_skeleton = true
 		spawn_skeleton()
 
-func get_spawning_time():
-	var time = Globals.level_steps[Globals.level_steps.size() - 1] / Globals.get_next_lvl_milestone()
-	
-	return float(float(time) / 50)
-
 func spawn_skeleton():
 	var skeleton_instance = ennemy_skeleton.instantiate()
 	
@@ -33,7 +28,7 @@ func spawn_skeleton():
 
 	skeleton_instance.position = mob_spawn_location.global_position
 	
-	var time = get_spawning_time()
+	var time = Globals.get_spawning_time()
 	
 	add_child(skeleton_instance)
 	await get_tree().create_timer(time).timeout

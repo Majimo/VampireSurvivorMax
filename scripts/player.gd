@@ -4,7 +4,8 @@ extends CharacterBody2D
 @onready var timer = $HitTimer
 @onready var axe = preload("res://scenes/axe_rigid_body.tscn")
 
-var speed = 200 
+@export var speed = 200
+
 var can_be_hit = true
 
 

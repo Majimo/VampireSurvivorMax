@@ -5,10 +5,10 @@ extends Node2D
 @onready var axe_area = $Area2D
 
 
-var initial_velocity = Vector2(200, -600)
-var gravity = Vector2(0, 800)
-var time = 0
-var max_time = 2
+@export var initial_velocity = Vector2(200, -600)
+@export var gravity = Vector2(0, 800)
+@export var time = 0
+@export var max_time = 2
 
 
 func _ready():
