@@ -82,5 +82,3 @@ monitorable = false
 visible = false
 position = Vector2(38, 0)
 shape = SubResource("RectangleShape2D_b03ua")
-
-[connection signal="body_entered" from="GarlicArea" to="." method="_on_garlic_area_body_entered"]

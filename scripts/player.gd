@@ -2,15 +2,12 @@ extends CharacterBody2D
 
 
 @onready var timer = $HitTimer
-@onready var axe = preload("res://scenes/axe_rigid_body.tscn")
+@onready var animation = $AnimationPlayer
 
 @export var speed = 200
 
 var can_be_hit = true
 
-
-func _ready():
-	Globals.set_has_garlic(true)
 
 func _process(delta):
 	# Déplacement horizontal
@@ -26,10 +23,10 @@ func _process(delta):
 	
 	if horizontal_input == 1:
 		$AnimatedSprite2D.scale.x = abs($AnimatedSprite2D.scale.x)
-		$Weapons.scale.x = abs($Weapons.scale.x)
+#		$Weapons.scale.x = abs($Weapons.scale.x)
 	elif horizontal_input == -1:
 		$AnimatedSprite2D.scale.x = -abs($AnimatedSprite2D.scale.x)
-		$Weapons.scale.x = -abs($Weapons.scale.x)
+#		$Weapons.scale.x = -abs($Weapons.scale.x)
 
 	if movement:
 		$AnimatedSprite2D.play("walk")
@@ -44,10 +41,12 @@ func _process(delta):
 
 
 func remove_life():
+	animation.play("hit")
 	can_be_hit = false
 	var lifeAmount = $LifeAmount.get_point_position(1).x
 	if lifeAmount > -20:
 		$LifeAmount.set_point_position(1, Vector2(lifeAmount - 4, -28))
+	else: get_tree().quit()
 
 
 func _on_hit_timer_timeout():

@@ -1,4 +1,4 @@
-[gd_scene load_steps=14 format=3 uid="uid://4ayijhu8o05j"]
+[gd_scene load_steps=16 format=3 uid="uid://4ayijhu8o05j"]
 
 [ext_resource type="Texture2D" uid="uid://d3isrsejj8rlp" path="res://assets/player/idle.png" id="1_d6a2h"]
 [ext_resource type="Script" path="res://scripts/player.gd" id="1_it484"]
@@ -7,7 +7,6 @@
 [ext_resource type="Texture2D" uid="uid://cq31n7pg3dmeh" path="res://assets/player/walk03.png" id="4_1i1x3"]
 [ext_resource type="Texture2D" uid="uid://cdxi1uw5p43qw" path="res://assets/player/walk04.png" id="5_wyewo"]
 [ext_resource type="Texture2D" uid="uid://c1o60k1yqvoum" path="res://assets/player/walk05.png" id="6_s6654"]
-[ext_resource type="PackedScene" uid="uid://b8ewed2x8rga" path="res://scenes/weapons.tscn" id="8_dctyt"]
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_yfh6v"]
 atlas = ExtResource("1_d6a2h")
@@ -70,6 +69,68 @@ animations = [{
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_ou4c5"]
 size = Vector2(20, 43)
 
+[sub_resource type="Animation" id="Animation_q0fv2"]
+resource_name = "hit"
+length = 0.2
+step = 0.05
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("AnimatedSprite2D:modulate")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 0.1, 0.2),
+"transitions": PackedFloat32Array(1, 1, 1),
+"update": 0,
+"values": [Color(1, 1, 1, 1), Color(1, 0, 0, 1), Color(1, 1, 1, 1)]
+}
+tracks/1/type = "value"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath(".:rotation")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(0, 0.05, 0.15, 0.2),
+"transitions": PackedFloat32Array(1, 1, 1, 1),
+"update": 0,
+"values": [0.0, -0.139626, 0.139626, 0.0]
+}
+
+[sub_resource type="Animation" id="Animation_6g6u5"]
+length = 0.001
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("AnimatedSprite2D:modulate")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Color(1, 1, 1, 1)]
+}
+tracks/1/type = "value"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath(".:rotation")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [3.48787e-16]
+}
+
+[sub_resource type="AnimationLibrary" id="AnimationLibrary_2fjpu"]
+_data = {
+"RESET": SubResource("Animation_6g6u5"),
+"hit": SubResource("Animation_q0fv2")
+}
+
 [node name="Player" type="CharacterBody2D"]
 script = ExtResource("1_it484")
 
@@ -80,8 +141,6 @@ animation = &"walk"
 [node name="CollisionShape2D" type="CollisionShape2D" parent="."]
 visible = false
 shape = SubResource("RectangleShape2D_ou4c5")
-
-[node name="Weapons" parent="." instance=ExtResource("8_dctyt")]
 
 [node name="MaxLife" type="Line2D" parent="."]
 points = PackedVector2Array(-20, -28, 20, -28)
@@ -94,5 +153,10 @@ width = 5.0
 default_color = Color(1, 0.137255, 0.137255, 1)
 
 [node name="HitTimer" type="Timer" parent="."]
+
+[node name="AnimationPlayer" type="AnimationPlayer" parent="."]
+libraries = {
+"": SubResource("AnimationLibrary_2fjpu")
+}
 
 [connection signal="timeout" from="HitTimer" to="." method="_on_hit_timer_timeout"]
