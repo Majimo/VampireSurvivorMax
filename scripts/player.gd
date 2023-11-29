@@ -11,13 +11,8 @@ var can_be_hit = true
 
 func _ready():
 	Globals.set_has_garlic(true)
-	Globals.set_has_axe(true)
 
 func _process(delta):
-	if Globals.get_has_axe():
-		attack_with_axe()
-		Globals.set_has_axe(false)
-	
 	# Déplacement horizontal
 	var horizontal_input = Input.get_action_strength("ui_right") - Input.get_action_strength("ui_left")
 	var horizontal_movement = Vector2(horizontal_input, 0).normalized() * speed * delta
@@ -47,13 +42,6 @@ func _process(delta):
 		timer.start(1.0)
 		remove_life()
 
-
-func attack_with_axe():
-	var axe_instance = axe.instantiate()
-	axe_instance.set_position(global_position)
-	get_parent().add_child(axe_instance)
-	await get_tree().create_timer(1.5).timeout
-	attack_with_axe()
 
 func remove_life():
 	can_be_hit = false

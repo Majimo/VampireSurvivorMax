@@ -13,7 +13,6 @@ extends Node2D
 
 func _ready():
 	axe_animation.play("throw")
-	axe_area.body_entered.connect(kill_enemy_with_axe)
 
 func _process(delta: float) -> void:
 	time += delta
@@ -22,9 +21,3 @@ func _process(delta: float) -> void:
 		position += velocity * delta
 	else:
 		queue_free()
-
-
-func kill_enemy_with_axe(body):
-	if body.is_in_group("enemy"):
-		body.queue_free()
-		Globals.set_player_XP(Globals.get_player_XP() + 2)

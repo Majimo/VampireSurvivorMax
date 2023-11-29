@@ -54,7 +54,7 @@ func get_spawning_time():
 	else:
 		time = 5
 	
-	return float(float(time) / 30)
+	return float(float(time) / 25)
 
 func get_next_lvl_milestone() -> int:
 	return level_steps[get_player_lvl()]
